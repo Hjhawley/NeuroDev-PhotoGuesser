@@ -60,8 +60,7 @@ button {
 }
 
 #photo {
-  width: 100%;
-  height: auto;
+  max-height: 600px;
   transform-origin: center;
   transition: transform 0.05s linear;
 }
