@@ -5,11 +5,10 @@ const imageList = Array.from(
     (_, i) => `images/${i + 1}.jpg`
 );
 
-
 let currentImages = [];
 let currentIndex = 0;
 
-let zoom = 5;            // start super zoomed-in
+let zoom = 5; // start super zoomed-in
 let zoomInterval = null;
 let paused = false;
 
@@ -28,8 +27,12 @@ function shuffle(array) {
 }
 
 function loadImage() {
-    zoom = 5; // reset zoom
+    zoom = 7;
     paused = false;
+
+    pauseBtn.classList.remove("hidden");
+    judgeControls.classList.add("hidden");
+    nextBtn.classList.add("hidden");
 
     const src = currentImages[currentIndex];
     photo.src = src;
@@ -37,9 +40,10 @@ function loadImage() {
 }
 
 function startZoom() {
+    clearInterval(zoomInterval);
     zoomInterval = setInterval(() => {
         if (paused) return;
-        zoom -= 0.02;
+        zoom -= 0.01;
         if (zoom < 1) zoom = 1;
         photo.style.transform = `scale(${zoom})`;
     }, 30);
