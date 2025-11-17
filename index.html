@@ -7,13 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NeuroDev Photo Guesser</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
   </head>
 
   <body>
     <main>
       <h1>Photo Guessing Game</h1>
-      <button>Start</button>
+
+      <button id="startBtn">Start</button>
+
+      <div id="game" class="hidden">
+        <img id="photo" />
+
+        <div id="controls">
+          <button id="pauseBtn">Pause</button>
+
+          <div id="judgeControls" class="hidden">
+            <button id="correctBtn">✅</button>
+            <button id="incorrectBtn">❌</button>
+          </div>
+
+          <button id="nextBtn" class="hidden">Next Photo</button>
+        </div>
+      </div>
     </main>
+
+    <script src="game.js"></script>
   </body>
 </html>

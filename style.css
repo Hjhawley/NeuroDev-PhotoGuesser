@@ -17,15 +17,13 @@
   --primary-color: #29c;
   --secondary-color: #228;
   --tertiary-color: #fe9;
-  --background-color: #dee;
   --text-color: #000;
-  --button-background: var(--primary-color);
-  --border-radius: 2rem;
+  --border-radius: 1em;
   --shadow: 2px 1px 3px #000;
 }
 
 body {
-  background-color: var(--background-color);
+  background-color: var(--secondary-color);
   color: var(--text-color);
   padding: 1.25rem;
 }
@@ -34,7 +32,7 @@ main {
   max-width: var(--max-width);
   height: 100%;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #f8f8f8;
   padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
@@ -42,21 +40,32 @@ main {
 
 h1 {
   color: var(--h1-color);
-  font-size: 3rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   text-align: center;
 }
 
 button {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   justify-content: center;
   margin: 0 auto;
-  padding: 1em 2em;
-  background-color: var(--button-background);
+  padding: 1rem;
+  background-color: var(--tertiary-color);
   border-radius: var(--border-radius);
   cursor: pointer;
-  color: #eee;
+  color: #000;
   box-shadow: var(--shadow);
   display: flex;
+}
+
+#photo {
+  width: 100%;
+  height: auto;
+  transform-origin: center;
+  transition: transform 0.05s linear;
+}
+
+.hidden {
+  display: none;
 }
