@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeuroDev Photo Guesser</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NeuroDev Photo Guesser</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.png" type="image/x-icon" />
-</head>
+  <body>
+    <main>
+      <h1>Photo Guessing Game</h1>
 
-<body>
-  <main>
-    <h1>Photo Guessing Game</h1>
+      <button id="startBtn">Start</button>
 
-    <button id="startBtn">Start</button>
-
-    <div id="game" class="hidden">
-      <div id="photoWrapper">
-        <img id="photo" />
-      </div>
-
-      <div id="controls">
-        <button id="pauseBtn">Pause</button>
-
-        <div id="judgeControls" class="hidden">
-          <button id="correctBtn">✅</button>
-          <button id="incorrectBtn">❌</button>
+      <div id="game" class="hidden">
+        <div id="photoWrapper">
+          <img id="photo" />
         </div>
 
-        <button id="nextBtn" class="hidden">Next Photo</button>
+        <div id="controls">
+          <button id="pauseBtn">Pause</button>
+
+          <div id="judgeControls" class="hidden">
+            <button id="correctBtn">✅</button>
+            <button id="incorrectBtn">❌</button>
+          </div>
+
+          <button id="nextBtn" class="hidden">Next Photo</button>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <script src="game.js"></script>
-</body>
-
+    <script src="game.js"></script>
+  </body>
 </html>
