@@ -45,6 +45,11 @@ h1 {
   text-align: center;
 }
 
+#controls {
+  position: relative;
+  z-index: 10;
+}
+
 button {
   font-size: 1.25rem;
   font-weight: bold;
@@ -59,10 +64,24 @@ button {
   display: flex;
 }
 
+#photoWrapper {
+  width: 600px;
+  height: 600px;
+  overflow: hidden;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
 #photo {
-  max-height: 600px;
+  width: auto;
+  height: auto;
   transform-origin: center;
   transition: transform 0.05s linear;
+  display: block;
 }
 
 .hidden {
