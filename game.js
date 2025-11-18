@@ -22,20 +22,25 @@ const hostControls = document.getElementById("hostControls");
 const rightButton = document.getElementById("rightButton");
 const wrongButton = document.getElementById("wrongButton");
 const nextButton = document.getElementById("nextButton");
-const correctLine = document.getElementById("correctLine");
+const rightMessage = document.getElementById("rightMessage");
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
 function loadPhoto() {
+  // Stop and clear any existing confetti
+  if (typeof confetti !== "undefined" && typeof confetti.reset === "function") {
+    confetti.reset();
+  }
+
   zoom = ZOOM_LEVEL;
   paused = false;
 
   pauseButton.classList.remove("hidden");
   hostControls.classList.add("hidden");
   nextButton.classList.add("hidden");
-  correctLine.classList.add("hidden");
+  rightMessage.classList.add("hidden");
 
   const src = currentPhotos[currentIndex];
   photo.src = src;
@@ -64,17 +69,48 @@ function resumeZoom() {
   pauseButton.classList.remove("hidden");
 }
 
+/* confetti */
+var count = 200;
+var defaults = {
+  origin: { y: 0.7 },
+};
+
+function fire(particleRatio, opts) {
+  confetti({
+    ...defaults,
+    ...opts,
+    particleCount: Math.floor(count * particleRatio),
+  });
+}
+
 function revealFull() {
   zoom = 1;
   photo.style.transform = `scale(${zoom})`;
   hostControls.classList.add("hidden");
   nextButton.classList.remove("hidden");
-  correctLine.classList.remove("hidden");
+  rightMessage.classList.remove("hidden");
 
-  confetti({
-    particleCount: 500,
+  fire(0.25, {
+    spread: 26,
+    startVelocity: 55,
+  });
+  fire(0.2, {
+    spread: 60,
+  });
+  fire(0.35, {
     spread: 100,
-    origin: { y: 0.9 },
+    decay: 0.91,
+    scalar: 0.8,
+  });
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 25,
+    decay: 0.92,
+    scalar: 1.2,
+  });
+  fire(0.1, {
+    spread: 120,
+    startVelocity: 45,
   });
 }
 
