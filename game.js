@@ -1,40 +1,41 @@
-const IMAGE_COUNT = 2;
+const PHOTO_COUNT = 2;
+const ZOOM_LEVEL = 7;
+let zoom = ZOOM_LEVEL;
 
-const imageList = Array.from(
-  { length: IMAGE_COUNT },
-  (_, i) => `images/${i + 1}.jpg`
+const photoList = Array.from(
+  { length: PHOTO_COUNT },
+  (_, i) => `photos/${i + 1}.jpg`
 );
 
-let currentImages = [];
+let currentPhotos = [];
 let currentIndex = 0;
 
-let zoom = 5; // start super zoomed-in
 let zoomInterval = null;
 let paused = false;
 
-const startBtn = document.getElementById("startBtn");
+const startButton = document.getElementById("startButton");
 const game = document.getElementById("game");
 const photo = document.getElementById("photo");
 
-const pauseBtn = document.getElementById("pauseBtn");
-const judgeControls = document.getElementById("judgeControls");
-const correctBtn = document.getElementById("correctBtn");
-const incorrectBtn = document.getElementById("incorrectBtn");
-const nextBtn = document.getElementById("nextBtn");
+const pauseButton = document.getElementById("pauseButton");
+const hostControls = document.getElementById("hostControls");
+const rightButton = document.getElementById("rightButton");
+const wrongButton = document.getElementById("wrongButton");
+const nextButton = document.getElementById("nextButton");
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-function loadImage() {
-  zoom = 7;
+function loadPhoto() {
+  zoom = ZOOM_LEVEL;
   paused = false;
 
-  pauseBtn.classList.remove("hidden");
-  judgeControls.classList.add("hidden");
-  nextBtn.classList.add("hidden");
+  pauseButton.classList.remove("hidden");
+  hostControls.classList.add("hidden");
+  nextButton.classList.add("hidden");
 
-  const src = currentImages[currentIndex];
+  const src = currentPhotos[currentIndex];
   photo.src = src;
   photo.style.transform = `scale(${zoom})`;
 }
@@ -51,50 +52,50 @@ function startZoom() {
 
 function pauseZoom() {
   paused = true;
-  pauseBtn.classList.add("hidden");
-  judgeControls.classList.remove("hidden");
+  pauseButton.classList.add("hidden");
+  hostControls.classList.remove("hidden");
 }
 
 function resumeZoom() {
   paused = false;
-  judgeControls.classList.add("hidden");
-  pauseBtn.classList.remove("hidden");
+  hostControls.classList.add("hidden");
+  pauseButton.classList.remove("hidden");
 }
 
 function revealFull() {
   zoom = 1;
-  photo.style.transform = `scale(1)`;
-  judgeControls.classList.add("hidden");
-  nextBtn.classList.remove("hidden");
+  photo.style.transform = `scale(${zoom})`;
+  hostControls.classList.add("hidden");
+  nextButton.classList.remove("hidden");
 }
 
-startBtn.onclick = () => {
-  currentImages = shuffle([...imageList]);
+startButton.onclick = () => {
+  currentPhotos = shuffle([...photoList]);
   currentIndex = 0;
 
-  startBtn.classList.add("hidden");
+  startButton.classList.add("hidden");
   game.classList.remove("hidden");
 
-  loadImage();
+  loadPhoto();
   startZoom();
 };
 
-pauseBtn.onclick = pauseZoom;
+pauseButton.onclick = pauseZoom;
 document.body.addEventListener("keydown", (e) => {
   if (e.code === "Space") pauseZoom();
 });
 
-correctBtn.onclick = revealFull;
-incorrectBtn.onclick = resumeZoom;
+rightButton.onclick = revealFull;
+wrongButton.onclick = resumeZoom;
 
-nextBtn.onclick = () => {
+nextButton.onclick = () => {
   currentIndex++;
-  if (currentIndex >= currentImages.length) {
-    alert("Out of photos!");
+  if (currentIndex >= currentPhotos.length) {
+    alert("Out of photos.\nGame Over!");
     return;
   }
 
-  nextBtn.classList.add("hidden");
+  nextButton.classList.add("hidden");
 
-  loadImage();
+  loadPhoto();
 };
