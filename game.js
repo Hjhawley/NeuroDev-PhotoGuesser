@@ -70,6 +70,12 @@ function revealFull() {
   hostControls.classList.add("hidden");
   nextButton.classList.remove("hidden");
   correctLine.classList.remove("hidden");
+
+  confetti({
+    particleCount: 500,
+    spread: 100,
+    origin: { y: 0.9 },
+  });
 }
 
 startButton.onclick = () => {
