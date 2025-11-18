@@ -22,6 +22,7 @@ const hostControls = document.getElementById("hostControls");
 const rightButton = document.getElementById("rightButton");
 const wrongButton = document.getElementById("wrongButton");
 const nextButton = document.getElementById("nextButton");
+const correctLine = document.getElementById("correctLine");
 
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
@@ -34,6 +35,7 @@ function loadPhoto() {
   pauseButton.classList.remove("hidden");
   hostControls.classList.add("hidden");
   nextButton.classList.add("hidden");
+  correctLine.classList.add("hidden");
 
   const src = currentPhotos[currentIndex];
   photo.src = src;
@@ -67,6 +69,7 @@ function revealFull() {
   photo.style.transform = `scale(${zoom})`;
   hostControls.classList.add("hidden");
   nextButton.classList.remove("hidden");
+  correctLine.classList.remove("hidden");
 }
 
 startButton.onclick = () => {

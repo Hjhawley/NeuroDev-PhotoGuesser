@@ -25,14 +25,14 @@ body {
   background-attachment: fixed;
   background-size: cover;
   color: var(--text-color);
-  padding: 1.25rem;
+  padding: 0.5rem;
 }
 
 main {
   max-width: var(--max-width);
   margin: 0 auto;
   background-color: #f8f8f8;
-  padding: 2rem;
+  padding: 0.5rem;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
 }
@@ -40,6 +40,12 @@ main {
 h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1rem;
+  font-style: italic;
+  margin: 0.5rem 0;
 }
 
 #controls {
@@ -56,7 +62,7 @@ button {
   cursor: pointer;
   color: #000;
   box-shadow: var(--shadow);
-  margin: 0 auto;
+  margin: 0.5rem auto;
 }
 
 #photoWrapper {
