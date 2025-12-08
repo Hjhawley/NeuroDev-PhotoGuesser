@@ -1,4 +1,4 @@
-const PHOTO_COUNT = 2;
+const PHOTO_COUNT = 44;
 const ZOOM_LEVEL = 7;
 let zoom = ZOOM_LEVEL;
 
