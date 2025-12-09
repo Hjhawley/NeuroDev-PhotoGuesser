@@ -4,7 +4,7 @@ let zoom = ZOOM_LEVEL;
 
 const photoList = Array.from(
   { length: PHOTO_COUNT },
-  (_, i) => `photos/${i + 1}.jpeg`
+  (_, i) => `photos/${i + 1}.jpg`
 );
 
 let currentPhotos = [];
