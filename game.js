@@ -1,5 +1,5 @@
-const PHOTO_COUNT = 44;
-const ZOOM_LEVEL = 7;
+const PHOTO_COUNT = 48;
+const ZOOM_LEVEL = 8;
 let zoom = ZOOM_LEVEL;
 
 const photoList = Array.from(
