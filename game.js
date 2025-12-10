@@ -134,11 +134,6 @@ startButton.onclick = () => {
 
   loadPhoto();
   startZoom();
-
-  // Kick off preloading in the background
-  setTimeout(() => {
-    preloadAllPhotos(currentPhotos);
-  }, 0);
 };
 
 pauseButton.onclick = pauseZoom;
@@ -160,3 +155,5 @@ nextButton.onclick = () => {
 
   loadPhoto();
 };
+
+preloadAllPhotos(photoList);
