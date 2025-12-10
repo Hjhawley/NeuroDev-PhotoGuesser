@@ -10,6 +10,17 @@ const photoList = Array.from(
 let currentPhotos = [];
 let currentIndex = 0;
 
+const imageCache = {};
+
+function preloadAllPhotos(list) {
+  list.forEach((src) => {
+    if (imageCache[src]) return;
+    const img = new Image();
+    img.src = src;
+    imageCache[src] = img;
+  });
+}
+
 let zoomInterval = null;
 let paused = false;
 
@@ -123,6 +134,11 @@ startButton.onclick = () => {
 
   loadPhoto();
   startZoom();
+
+  // Kick off preloading in the background
+  setTimeout(() => {
+    preloadAllPhotos(currentPhotos);
+  }, 0);
 };
 
 pauseButton.onclick = pauseZoom;
